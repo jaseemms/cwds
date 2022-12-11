@@ -1,0 +1,25 @@
+{% extends base_template %}
+
+{% block content %}
+	<table>
+		<tr>
+			<td>Product Name</td>
+			<td>{{product.product_name}}</td>
+		</tr>
+		<tr>
+			<td>Product Price</td>
+			<td>{{product.price}}</td>
+		</tr>
+	</table>
+	<form method="post" action="">
+	{% csrf_token %}
+    {{ form.non_field_errors }}
+		<table>
+			<tr class="fieldWrapper">
+		        <td for="{{ form.quantity.id_for_label }}">Quantity:</td>
+		        <td>{{ form.quantity.errors }}{{form.quantity}}</td>
+	    	</tr>
+    	</table>
+    	<input type="submit" value="Purchase" />
+	</form>
+{% endblock %}

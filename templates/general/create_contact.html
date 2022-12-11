@@ -1,0 +1,34 @@
+{% extends 'general/index.html' %}
+{% load i18n %}
+
+{% block content %}
+{% if message %}<br/>{{message}}{% endif %}
+<form action="." method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="fieldWrapper">
+        {{ form.name.errors }}
+        <label for="{{ form.name.id_for_label }}">Name:</label>
+        {{ form.name }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.email.errors }}
+        <label for="{{ form.email.id_for_label }}">Email:</label>
+        {{ form.email }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.subject.errors }}
+        <label for="{{ form.subject.id_for_label }}">Subject:</label>
+        {{ form.subject }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.message.errors }}
+        <label for="{{ form.message.id_for_label }}">Message:</label>
+        {{ form.message }}
+    </div>
+     <input type="submit" value="Submit" />
+</form>
+
+<a href="{% url 'general:create_donation' %}">Donate Now</a>
+
+{% endblock %}

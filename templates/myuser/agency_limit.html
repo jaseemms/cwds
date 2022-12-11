@@ -1,0 +1,18 @@
+{% extends base_template %}
+
+{% block content %}
+ <form action="." method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div>
+    	<label>Agency:</label>
+    	<table>{{instance.first_name}}</table>
+    </div>
+    <div class="fieldWrapper">
+        {{ form.agency_limit.errors }}
+        <label for="{{ form.agency_limit.id_for_label }}">Agency Limit:</label>
+        {{form.agency_limit}}
+    </div>
+     <input type="submit" value="Submit" />
+</form>
+{% endblock %}

@@ -1,0 +1,10 @@
+<title>{{app_title}} | {{title}}</title>
+
+<a href="{% url 'general:index' %}">Home</a>
+<a href="{% url 'general:about' %}">About</a>
+<a href="{% url 'general:create_contact' %}">Contact Us</a>
+<a href="{% url 'agency_login' %}">Agency Login</a>
+<a href="{% url 'plant_login' %}">Plant Login</a>
+<a href="{% url 'user_login' %}">User Login</a>
+
+{% block content %}{% endblock %}

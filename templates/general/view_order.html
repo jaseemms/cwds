@@ -1,0 +1,48 @@
+{% extends base_template %}
+
+{% block content %}
+<table>
+	<tr>
+		<td>Name:</td>
+		<td>{{instance.user.first_name}}</td>
+	</tr>
+	<tr>
+		<td>Email Address:</td>
+		<td>{{instance.user.email}}</td>
+	</tr>
+	<tr>
+		<td>Telephone No.:</td>
+		<td>{{instance.user.contact_number}}</td>
+	</tr>
+	<tr>
+		<td>Shipping Address:</td>
+		<td>{{instance.user.address}}</td>
+	</tr>
+	<tr>
+		<td>City:</td>
+		<td>{{instance.user.location}}</td>
+	</tr>
+	<tr>
+		<td>ZipCode:</td>
+		<td>{{instance.user.pincode}}</td>
+	</tr>
+</table>
+
+<table>
+	<caption>Order Number {{instance.order_id}}</caption>
+	<tr>
+		<td>Product #</td>
+		<td>Product</td>
+		<td>Quantity</td>
+		<td>Price/Item</td>
+		<td>total</td>
+	</tr>
+	<tr>
+		<td>{{instance.product.product_code}}</td>
+		<td>{{instance.product.product_name}}</td>
+		<td>{{instance.quantity}}</td>
+		<td>{{instance.product.price}}</td>
+		<td>{{instance.total_price}}</td>
+	</tr>
+</table>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'general/plant_dashboard.html' %}
+
+{% block content %}
+
+{% if request.user.user_type == 'plant' %}
+<p><a href="{% url 'myuser:edit_plant' pk=instance.pk %}">Edit Account</a></p>
+<p><a href="{% url 'password_change' %}">Change Password </a></p>
+{% endif %}
+
+{% if request.user.is_superuser %}
+<p><a href="{% url 'general:plant_confirm' %}?p={{instance.pk}}">Confirm activation</a></p>
+{% endif %}
+
+<table>
+	<tr>
+		<td> Username</td>
+		<td>{{instance.username}}</td>
+	</tr>
+	<tr>
+		<td> Name</td>
+		<td>{{instance.first_name}}</td>
+	</tr>
+	<tr>
+		<td> Address</td>
+		<td>{{instance.address}}</td>
+	</tr>
+	<tr>
+		<td> Location</td>
+		<td>{{instance.location}}</td>
+	</tr>
+	<tr>
+		<td> Pincode</td>
+		<td>{{instance.pincode}}</td>
+	</tr>
+	<tr>
+		<td>Plant Type</td>
+		<td>{{instance.get_plant_type_display}}</td>
+	</tr>
+	<tr>
+		<td> Email</td>
+		<td>{{instance.email}}</td>
+	</tr>
+	<tr>
+		<td> Contact Number</td>
+		<td>{{instance.contact_number}}</td>
+	</tr>	
+</table>
+{% endblock %}

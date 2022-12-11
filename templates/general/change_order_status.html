@@ -1,0 +1,31 @@
+{% extends base_template %}
+
+{% block content %}
+<form method="post" action="">
+	{% csrf_token %}
+    {{ form.non_field_errors }}
+	<table>
+		<tr>
+			<td>Order #</td>
+			<td>{{instance.order_id}}</td>
+		</tr>
+		<tr>
+			<td>Customer</td>
+			<td>{{instance.user.first_name}}</td>
+		</tr>
+		<tr>
+			<td>Total Cost</td>
+			<td>{{instance.total_price}}</td>
+		</tr>
+		<tr>
+			<td>Date</td>
+			<td>{{instance.date}}</td>
+		</tr>
+		<tr class="fieldWrapper">
+	        <td for="{{ form.state.id_for_label }}">Status:</td>
+	        <td>{{ form.state.errors }}{{form.state}}</td>
+    	</tr>
+	</table>
+	<input type="submit" value="Submit" />
+</form>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'general/agency_dashboard.html' %}
+
+{% block content %}
+{% if request.user.user_type == 'agency' %}
+<p><a href="{% url 'myuser:edit_agency' pk=instance.pk %}">Edit Profile</a></p>
+<p><a href="{% url 'password_change' %}">Change Password </a></p>
+{% endif %}
+{% if request.user.is_superuser %}
+<p><a href="{% url 'general:agency_confirm' %}?a={{instance.pk}}">Confirm activation</a></p>
+{% endif %}
+<table>
+	<tr>
+		<td> Username</td>
+		<td>{{instance.username}}</td>
+	</tr>
+	<tr>
+		<td> Agency Name</td>
+		<td>{{instance.first_name}}</td>
+	</tr>
+	<tr>
+		<td> Agency Address</td>
+		<td>{{instance.address}}</td>
+	</tr>
+	<tr>
+		<td> Location</td>
+		<td>{{instance.location}}</td>
+	</tr>
+	<tr>
+		<td> Agency Pincode</td>
+		<td>{{instance.pincode}}</td>
+	</tr>
+	<tr>
+		<td> Agency Email</td>
+		<td>{{instance.email}}</td>
+	</tr>
+	<tr>
+		<td> Agency Contact Number</td>
+		<td>{{instance.contact_number}}</td>
+	</tr>	
+</table>
+
+{% if request.user.user_type == 'agency' %}
+{% if plants %}
+<table>
+	<tr>
+		<td>Plant</td>
+		<td>Action</td>
+	</tr>
+	{% for plant in plants %}
+	<tr>
+		<td>{{plant.plant.first_name}}</td>
+		<td><a href="{% url 'general:removeplant' plant.pk %}">Change</a></td>
+	</tr>
+	{% endfor %}
+</table>
+{% endif %}
+{% endif %}
+{% endblock %}

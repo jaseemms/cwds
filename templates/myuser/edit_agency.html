@@ -1,0 +1,44 @@
+{% extends 'general/agency_dashboard.html' %}
+
+{% block content %}
+<form action="." method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="fieldWrapper">
+        {{ form.first_name.errors }}
+        <label for="{{ form.first_name.id_for_label }}">Name:</label>
+        <input type="text" name="first_name" value="{{form.first_name.value}}" placeholder="Enter Agency Name" id="id_first_name" maxlength="30" />
+    </div>
+    <div class="fieldWrapper">
+        {{ form.address.errors }}
+        <label for="{{ form.address.id_for_label }}">Address:</label>
+        <input type="text" name="address" value="{{form.address.value}}" placeholder="Enter Agency Address" required id="id_address" maxlength="128" />
+    </div>
+    <div class="fieldWrapper">
+        {{ form.location.errors }}
+        <label for="{{ form.location.id_for_label }}">Location:</label>
+        {{ form.location }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.pincode.errors }}
+        <label for="{{ form.pincode.id_for_label }}">Pincode:</label>
+        <input type="text" name="pincode" value="{{form.pincode.value}}" placeholder="Enter Pincode" required id="id_pincode" maxlength="20" />
+    </div>
+    <div class="fieldWrapper">
+        {{ form.email.errors }}
+        <label for="{{ form.email.id_for_label }}">Email:</label>
+         <input type="email" name="email" value="{{form.email.value}}" placeholder="Enter Email Id" required id="id_email" maxlength="254" />
+    </div>
+    <div class="fieldWrapper">
+        {{ form.contact_number.errors }}
+        <label for="{{ form.contact_number.id_for_label }}">Contact Number:</label>
+         <input type="text" name="contact_number" value="{{form.contact_number.value}}" placeholder="Enter Contact Number" required id="id_contact_number" maxlength="20" />
+    </div>
+    <div class="fieldWrapper">
+        {{ form.username.errors }}
+        <label for="{{ form.username.id_for_label }}">Username:</label>
+        <input type="text" name="username" value="{{form.username.value}}" placeholder="Enter Username" required id="id_username" maxlength="150" />
+    </div>
+     <input type="submit" value="Submit" />
+</form>
+{% endblock %}

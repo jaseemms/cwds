@@ -1,0 +1,23 @@
+{% extends 'general/agency_dashboard.html' %}
+
+{% block content %}
+	{% if message %}<br/>{{message}} {% endif %}
+	{% if instances %}
+		{% for instance in instances %}
+			<table>
+				<tr>
+					<td>{{instance.plant.first_name}}</td>
+					<td>
+					{% if instance.status == 'select' %}
+						<a href="{% url 'general:request_plant_confirm' instance.plant.pk %}">Request</a>
+					{% else %}
+						<a href="#">On Processing</a>
+					{% endif %}
+					</td>
+				</tr>
+			</table>
+		{% endfor %}
+	{% else %}
+		<br/>Nothing Found.
+	{% endif %}
+{% endblock %}

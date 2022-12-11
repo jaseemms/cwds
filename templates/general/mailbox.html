@@ -1,0 +1,15 @@
+{% extends base_template %}
+
+{% block content %}
+	<p>{{inboxes}} Inbox</p>
+	<p>{{sent_items}} Sent Items</p>
+	<a href="{% url 'general:create_mail' %}">
+	{% if request.user.user_type == 'agency' %}
+		Response 
+	{% else %}
+		Create FeedBack
+		{% endif %}
+	</a>
+	<a href="{% url 'general:received_mail' %}">Inbox</a>
+	<a href="{% url 'general:sent_mail' %}">Sent Mail</a>
+{% endblock %}

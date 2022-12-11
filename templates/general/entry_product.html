@@ -1,0 +1,35 @@
+{% extends base_template %}
+
+{% block content %}
+<form action="." method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="fieldWrapper">
+        {{ form.product_code.errors }}
+        <label for="{{ form.product_code.id_for_label }}">Product Code:</label>
+        {{ form.product_code }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.product_name.errors }}
+        <label for="{{ form.product_name.id_for_label }}">Product Name:</label>
+        {{ form.product_name }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.description.errors }}
+        <label for="{{ form.description.id_for_label }}">Description:</label>
+        {{ form.description }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.price.errors }}
+        <label for="{{ form.price.id_for_label }}">Price:</label>
+        {{ form.price }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.image.errors }}
+        <label for="{{ form.image.id_for_label }}">Image:</label>
+        {{ form.image }}
+    </div>
+     <input type="submit" value="Save" />
+     <a type="button" href="{% url 'general:view_products' %}">Back</a>
+</form>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'general/agency_dashboard.html' %}
+
+{% block content %}
+{% if instances %}
+<table>
+{% for instance in instances %}
+	<tr>
+		<td>{{instance.user.first_name}}</td>
+		<td><a href="{% url 'general:conform_agency_user' instance.pk %}">Conform</a></td>
+	</tr>
+{% endfor %}
+</table>
+{% else %}
+<br/>Nothing Found
+{% endif %}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'general/admin_dashboard.html' %}
+
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="fieldWrapper">
+        {{ form.location.errors }}
+        <label for="{{ form.location.id_for_label }}">Enter Location:</label>
+        {{ form.location }}
+    </div>
+     <input type="submit" value="Submit" />
+</form>
+{% endblock %}

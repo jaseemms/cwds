@@ -1,0 +1,38 @@
+{% extends base_template %}
+
+{% block content %}
+{% if request.user.user_type == 'plant' %}
+	<br/><a href="{% url 'general:create_product' %}">New Product</a>
+{% endif %}
+{% if instances %}
+<table>
+	<tr>
+		<td>SL.No</td>
+		<td>Product</td>
+
+		{% if request.user.is_superuser %}
+		<td>Plant</td>
+		{% endif %}
+
+		<td>Action</td>
+	</tr>
+	{% for instance in instances %}
+		<tr>
+			<td>{{forloop.counter}}</td>
+			<td><img src="{{instance.image.url}}" alt="image" />{{instance.product_name}}</td>
+			{% if request.user.is_superuser %}
+			<td>{{instance.plant.first_name}}</td>
+			{% endif %}
+			{% if request.user.user_type == 'plant' or request.user.is_superuser %}
+				<td><a href="{% url 'general:edit_product' instance.pk %}">Edit</a><a href="{% url 'general:delete_product' instance.pk %}">Delete</a></td>
+			{% endif %}
+			{% if request.user.user_type == 'user' %}
+				<td><a href="{% url 'general:create_order' instance.pk %}">Buy</a></td>
+			{% endif %}
+		</tr>
+	{% endfor %}
+</table>
+{% else %}
+<br/>Nothing Found
+{% endif %}
+{% endblock %}

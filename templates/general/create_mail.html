@@ -1,0 +1,26 @@
+{% extends base_template %}
+
+
+{% block content %}
+{% if message %}<br/>{{message}}{% endif %}
+<form action="." method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="fieldWrapper">
+        {{ form.to.errors }}
+        <label for="{{ form.to.id_for_label }}">To:</label>
+        {{ form.to }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.subject.errors }}
+        <label for="{{ form.subject.id_for_label }}">Subject:</label>
+        {{ form.subject }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.message.errors }}
+        <label for="{{ form.message.id_for_label }}">Message:</label>
+        {{ form.message }}
+    </div>
+     <input type="submit" value="Submit" />
+</form>
+{% endblock %}

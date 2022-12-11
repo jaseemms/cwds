@@ -1,0 +1,49 @@
+{% extends 'general/plant_dashboard.html' %}
+
+{% block content %}
+<form action="." method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="fieldWrapper">
+        {{ form.first_name.errors }}
+        <label for="{{ form.first_name.id_for_label }}">Name:</label>
+        {{ form.first_name }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.address.errors }}
+        <label for="{{ form.address.id_for_label }}">Address:</label>
+        {{ form.address }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.location.errors }}
+        <label for="{{ form.location.id_for_label }}">Location:</label>
+        {{ form.location }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.pincode.errors }}
+        <label for="{{ form.pincode.id_for_label }}">Pincode:</label>
+        {{ form.pincode }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.email.errors }}
+        <label for="{{ form.email.id_for_label }}">Email:</label>
+        {{ form.email }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.contact_number.errors }}
+        <label for="{{ form.contact_number.id_for_label }}">Contact Number:</label>
+        {{ form.contact_number }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.plant_type.errors }}
+        <label for="{{ form.plant_type.id_for_label }}">Plant Type:</label>
+        {{ form.plant_type }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.username.errors }}
+        <label for="{{ form.username.id_for_label }}">Username:</label>
+        {{ form.username }}
+    </div>
+     <input type="submit" value="Submit" />
+</form>
+{% endblock %}

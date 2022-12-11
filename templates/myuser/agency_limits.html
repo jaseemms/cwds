@@ -1,0 +1,24 @@
+{% extends base_template %}
+
+{% block content %}
+{% if instances %}
+<table>
+	<tr>
+		<td>Id</td>
+		<td>Agency</td>
+		<td>Current Limit</td>
+		<td>Change</td>
+	</tr>
+{% for instance in instances %}
+	<tr>
+		<td>{{instance.id}}</td>
+		<td>{{instance.first_name}}</td>
+		<td>{{instance.get_agency_limit_display}}</td>
+		<td><a href="{% url 'myuser:agency_limit' instance.pk %}">Change status</a></td>
+	</tr>
+	{% endfor %}
+</table>
+{% else %}
+<br/>Nothing found
+{% endif %}
+{% endblock %}

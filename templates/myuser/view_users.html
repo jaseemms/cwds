@@ -1,0 +1,15 @@
+{% extends base_template %}
+
+{% block content %}
+{% if instances %}
+<table>
+{% for instance in instances %}
+<tr>
+	<td>{{instance.first_name}}</td>
+</tr>
+{% endfor %}
+</table>
+{% else %}
+<br/> Nothing Found.
+{% endif %}
+{% endblock %}

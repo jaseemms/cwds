@@ -1,0 +1,52 @@
+{% extends 'general/index.html' %}
+{% load i18n %}
+
+{% block content %}
+<br/>{{title}}
+<form action="." method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="fieldWrapper">
+        {{ form.first_name.errors }}
+        <label for="{{ form.first_name.id_for_label }}">Enter Your Name:</label>
+        <input type="text" autofocus name="first_name" id="id_first_name" maxlength="30" placeholder="Enter Your Name" />
+    </div>
+    <div class="fieldWrapper">
+        {{ form.address.errors }}
+        <label for="{{ form.address.id_for_label }}">Enter Your Address:</label>
+         <input type="text" name="address" required id="id_address" maxlength="128" placeholder="Enter Your Address" />
+    </div>
+    <div class="fieldWrapper">
+        {{ form.location.errors }}
+        <label for="{{ form.location.id_for_label }}">Enter Your Location:</label>
+        {{ form.location }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.pincode.errors }}
+        <label for="{{ form.pincode.id_for_label }}">Enter Your Pincode:</label>
+        <input type="text" name="pincode" required id="id_pincode" maxlength="20" placeholder="Enter Your Pincode" />
+    </div>
+    <div class="fieldWrapper">
+        {{ form.email.errors }}
+        <label for="{{ form.email.id_for_label }}">Enter Your Email Id:</label>
+        <input type="email" name="email" id="id_email" maxlength="254" placeholder="Enter Your Email Id" />
+    </div>
+    <div class="fieldWrapper">
+        {{ form.contact_number.errors }}
+        <label for="{{ form.contact_number.id_for_label }}">Enter Your Contact Number:</label>
+        <input type="text" name="contact_number" required id="id_contact_number" maxlength="20" placeholder="Enter Your Contact Number" />
+    </div>
+    <div class="fieldWrapper">
+        {{ form.username.errors }}
+        <label for="{{ form.username.id_for_label }}">Enter a Username:</label>
+        <input type="text" name="username" required id="id_username" maxlength="150" placeholder="Enter a Username"/>
+    </div>
+    <div class="fieldWrapper">
+        {{ form.password1.errors }}
+        <label for="{{ form.password1.id_for_label }}">Enter a Password:</label>
+        <input type="password" name="password1" required id="id_password1" placeholder="Enter a Password" />
+    </div>
+     <input type="submit" value="Submit" />
+</form>
+<a href="{% url 'user_login' %}">Go and Login</a>
+{% endblock %}

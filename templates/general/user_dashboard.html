@@ -1,0 +1,14 @@
+<title>{{app_title}} | {{title}}</title>
+
+<a href="{% url 'general:user_dashboard' %}">Home</a>
+<a href="{% url 'myuser:view_agencies' %}">Selct Agency</a>
+<a href="{% url 'general:request_agency' %}">Request Agency</a>
+<a href="{% url 'general:mailbox' %}" >FeedBack</a>
+<a href="{% url 'general:view_products' %}" >Fertilizers</a>
+<a href="{% url 'general:view_orders' %}" >View Status</a>
+<a href="{% url 'myuser:view_user' request.user.pk %}">My Account</a>
+<a href="{% url 'logout' %}">Logout Now</a>
+
+{% block content %}
+	<br/>User Dashboard
+{% endblock %}

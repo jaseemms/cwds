@@ -1,0 +1,24 @@
+{% extends base_template %}
+
+{% block content %}
+{% if instances %}
+<table>
+	<tr>
+		<td>To</td>
+		<td>Message</td>
+		<td>Date</td>
+		<td>Action</td>
+	</tr>
+	{% for instance in instances %}
+	<tr>
+		<td>{{instance.to}}</td>
+		<td>{{instance.message}}</td>
+		<td>{{instance.date}}</td>
+		<td><a href="{% url 'general:sentitems_deleted' instance.pk %}">Delete</a></td>
+	</tr>
+	{% endfor %}
+</table>
+{% else %}
+<br/>Nothing Found
+{% endif %}
+{% endblock %}

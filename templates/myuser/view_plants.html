@@ -1,0 +1,18 @@
+{% extends base_template %}
+
+{% block content %}
+	{% if instances %}
+	{% for instance in instances %}
+	<table>
+		<tr>
+			<td>{{instance.first_name}}</td>
+			{% if request.user.user_type == 'agency' %}
+			<td><a href="{% url 'general:select_plant' instance.pk %}">Select</a></td>
+			{% endif %}
+		</tr>
+	</table>
+	{% endfor %}
+	{% else %}
+	<br/>Nothing Found.
+	{% endif %}
+{% endblock %}

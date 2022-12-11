@@ -1,0 +1,24 @@
+{% extends 'general/plant_dashboard.html' %}
+
+{% block content %}
+{% if instances %}
+<table>
+	<tr>
+		<td>Sl No</td>
+		<td>User Details</td>
+		<td>Status</td>
+		<td>Update</td>
+	</tr>
+	{% for instance in instances %}
+	<tr>
+		<td>{{forloop.counter}}</td>
+		<td>{{instance.agency_user.first_name}}</td>
+		<td>{{instance.get_status_display}}</td>
+		<td><a href="{% url 'general:complete_plant_request' instance.pk %}">Complete</a></td>
+	</tr>
+	{% endfor %}
+</table>
+{% else %}
+  <br/>Nothing found
+{% endif %}
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'general/index.html' %}
+{% load i18n %}
+
+{% block content %}
+
+<br/>{{title}}
+
+<form action="." method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="fieldWrapper">
+        {{ form.first_name.errors }}
+        <label for="{{ form.first_name.id_for_label }}">Enter Plant Name:</label>
+        {{ form.first_name }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.address.errors }}
+        <label for="{{ form.address.id_for_label }}">Enter Plant Address:</label>
+        {{ form.address }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.location.errors }}
+        <label for="{{ form.location.id_for_label }}">Enter Plant Location:</label>
+        {{ form.location }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.pincode.errors }}
+        <label for="{{ form.pincode.id_for_label }}">Enter Plant Pincode:</label>
+        {{ form.pincode }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.email.errors }}
+        <label for="{{ form.email.id_for_label }}">Enter Plant Email:</label>
+        {{ form.email }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.contact_number.errors }}
+        <label for="{{ form.contact_number.id_for_label }}">Enter Plant Contact Number:</label>
+        {{ form.contact_number }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.plant_type.errors }}
+        <label for="{{ form.plant_type.id_for_label }}">Enter Plant Type:</label>
+        {{ form.plant_type }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.username.errors }}
+        <label for="{{ form.username.id_for_label }}">Enter a Username:</label>
+        <input type="text" name="username" required id="id_username" maxlength="150" placeholder="Enter a Username"/>
+    </div>
+    <div class="fieldWrapper">
+        {{ form.password1.errors }}
+        <label for="{{ form.password1.id_for_label }}">Enter a Password:</label>
+        <input type="password" name="password1" required id="id_password1" placeholder="Enter a Password" />
+    </div>
+     <input type="submit" value="Submit" />
+</form>
+
+<a href="{% url 'plant_login' %}">Go and Login</a>
+{% endblock %}

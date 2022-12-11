@@ -1,0 +1,18 @@
+{% extends 'general/admin_dashboard.html' %}
+
+{% block content %}
+<br/><a href="{% url 'myuser:create_location' %}">Create Location</a>
+<table>
+	{% if instances %}
+	{% for instance in instances %}
+	<tr>
+		<td>{{instance.location}}</td>
+		<td><a href="{% url 'myuser:edit_location' pk=instance.pk %}">Edit</a></td>
+		<td><a href="{% url 'myuser:delete_location' pk=instance.pk %}">Delete</a></td>
+	</tr>
+	{% endfor %}
+	{% else %}
+	Nothing found
+	{% endif %}
+</table>
+{% endblock %}

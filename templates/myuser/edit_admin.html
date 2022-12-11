@@ -1,0 +1,14 @@
+{% extends base_template %}
+
+{% block content %}
+ <form action="." method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="fieldWrapper">
+        {{ form.username.errors }}
+        <label for="{{ form.username.id_for_label }}">Username:</label>
+        <input type="text" name="username" value="{{form.username.value}}" required id="id_username" maxlength="150" placeholder="Enter Username"/>
+    </div>
+     <input type="submit" value="Submit" />
+</form>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'general/admin_dashboard.html' %}
+
+{% block content %}
+{% if instances %}
+<table>
+{% for instance in instances %}
+	<tr>
+		<td><a href="{% url 'myuser:view_plant' pk=instance.pk %}">{{instance.first_name}}</a></td>
+		<td><a href="{% url 'general:plant_confirm' %}?p={{instance.pk}}">Confirm Activation</a></td>
+	</tr>
+{% endfor %}
+</table>
+
+{% else %}
+<br/>Nothing Found
+{% endif %}
+{% endblock %}

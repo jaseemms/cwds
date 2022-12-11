@@ -1,0 +1,26 @@
+{% extends base_template %}
+
+{% block content %}
+ <table>
+ 	<tr>
+ 		<td>Product Code</td>
+ 		<td>{{instance.product_code}}</td>
+ 	</tr>
+ 	<tr>
+ 		<td>Product Name</td>
+ 		<td>{{instance.product_name}}</td>
+ 	</tr>
+ 	<tr>
+ 		<td>Product Description</td>
+ 		<td>{{instance.description}}</td>
+ 	</tr>
+ 	<tr>
+ 		<td>Product Price</td>
+ 		<td>{{instance.price}}</td>
+ 	</tr>
+ 	<tr>
+ 		<td>Product Image</td>
+ 		<td><img src="{{instance.image}}" alt="image" /></td>
+ 	</tr>
+ </table>
+ {% endblock %}
